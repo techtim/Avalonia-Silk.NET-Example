@@ -24,8 +24,17 @@
       <Content Include="shader.vert">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </Content>
-      <None Remove="Gl\shader.frag" />
-      <None Remove="Gl\shader.vert" />
+        <Content Include="lines.frag">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <Content Include="lines.vert">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <None Remove="lines.frag" />
+        <None Remove="lines.vert" />
+        <None Remove="Gl\shader.frag" />
+        <None Remove="Gl\shader.vert" />
+        <None Remove="silk.png" />
       <None Remove="Gl\silk.png" />
     </ItemGroup>
 </Project>

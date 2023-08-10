@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Numerics;
 using Silk.NET.OpenGL;
 
 namespace Tutorial
@@ -24,6 +25,7 @@ namespace Tutorial
             {
                 throw new Exception($"Program failed to link with error: {_gl.GetProgramInfoLog(_handle)}");
             }
+
             _gl.DetachShader(_handle, vertex);
             _gl.DetachShader(_handle, fragment);
             _gl.DeleteShader(vertex);
@@ -42,6 +44,7 @@ namespace Tutorial
             {
                 throw new Exception($"{name} uniform not found on shader.");
             }
+
             _gl.Uniform1(location, value);
         }
 
@@ -50,9 +53,45 @@ namespace Tutorial
             int location = _gl.GetUniformLocation(_handle, name);
             if (location == -1)
             {
+                // throw new Exception($"{name} uniform not found on shader.");
+                Console.WriteLine($"{name} uniform not found on shader.");
+            }
+
+            _gl.Uniform1(location, value);
+        }
+
+        public void SetUniform(string name, Vector4 value)
+        {
+            int location = _gl.GetUniformLocation(_handle, name);
+            if (location == -1)
+            {
+                throw new Exception($"{name} uniform not found on shader.");
+                Console.WriteLine($"{name} uniform not found on shader.");
+            }
+
+            _gl.Uniform4(location, value);
+        }
+
+        public void SetUniform(string name, Vector3 value)
+        {
+            int location = _gl.GetUniformLocation(_handle, name);
+            if (location == -1)
+            {
                 throw new Exception($"{name} uniform not found on shader.");
             }
-            _gl.Uniform1(location, value);
+
+            _gl.Uniform3(location, value);
+        }
+
+        public void SetUniform(string name, Vector2 value)
+        {
+            int location = _gl.GetUniformLocation(_handle, name);
+            if (location == -1)
+            {
+                throw new Exception($"{name} uniform not found on shader.");
+            }
+
+            _gl.Uniform2(location, value);
         }
 
         public void Dispose()
